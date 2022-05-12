@@ -1,12 +1,6 @@
 # Project sans-nom: Gource Wizard
 
-## Project URL
-
-https://gource-wizard.ryan.software
-
-## Project Video URL 
-
-https://www.youtube.com/watch?v=aCvkJtZRDpE
+*This was created during part of a University course. The project was deployed for the duration of the course but it is no longer publically accessible.*
 
 ## Project Description
 
@@ -19,8 +13,6 @@ There are various ways you can customize our video, such as:
 - Declare what section of the repository you want rendered
 
 ## Development
-
-**Task:** Leaving deployment aside, explain how the app is built. Please describe the overall code design and be specific about the programming languages, framework, libraries and third-party api that you have used. 
 
 ### Overall Architecture
 
@@ -103,8 +95,6 @@ When the status of a monitored service goes down, we are notified in a shared Di
 
 ## Challenges
 
-**Task:** What is the top 3 most challenging things that you have learned/developed for you app? Please restrict your answer to only three items. 
-
 ### Challenge 1 - Github Integration: App Authentication and Webhooks
 
 1. Integrating with Github was a great challenge as their documentation is very scattered and finding the instructions for setting up a particular obvious workflow requires combining information from across several different pages. At the beginning of our development process, My preliminary research on authentication and webhooks led me to believe that we could use an OAuth flow to authenticate users. This, however, presented a unique issue: the OAuth authentication flow is unable to persist authentication tokens long enough for authenticated API calls in response to webhooks. This requires the use of a Github app to authenticate. Users install our Github App on their repository, which gives us permission to clone the repository, and subscribes our app to push webhooks from that repository. We can then authenticate as an installation, Github will verify that this installation is in fact from our app and provide an installation auth token without the interaction of a user. Another major challenge with Github was the limitations of their OAuth systems. Firstly, Github does not provide interfaces for auth through their graphql API, so it was necessary to perform these calls through plain REST controllers. Secondly, Github does not support cross-origin authentication. This means that you cannot tell Github which origins can be trusted for auth. A client originating from one domain may not initiate authentication and have it completed through a server in another domain, as Github will respond with a CORS error. This is the reason we have a static login page on the backend to perform the entire authentication flow from the backend and just pass the session cookie to the frontend through a redirect. Figuring out all these details took a lot of effort.
@@ -121,8 +111,6 @@ Instead, we use HLS to create a playlist (.m3u8) file which references 2 second 
 
 ## Contributions
 
-**Task:** Describe the contribution of each team member to the project. Please provide the full name of each team member (but no student number). 
-
 **Robert Nichita**
 
 Robert was primarily responsible for most of the backend tasks. This includes setting up the GraphQL schema, validation of inputs to the backend and to the worker, and authentication. Robert was tasked with allowing users to log in with their Github accounts, and setting up support for webhooks to allow the backend to perform tasks on each commit to the user's repository. Robert also setup Google TypeScript Style (GTS) for the project to allow for consistent linting and automatic code fixes. Robert also assisted Ryan with the deployment of the applications.
@@ -136,7 +124,5 @@ Ryan was primarily responsible for creating the worker service (which renders an
 Darren's primary responsibility was designing and creating the UI. This includes creating the various UI components such as a custom class for buttons, validation of inputs in the frontend, and setting up routing for the frontend. Darren also set up protected routes, so any unauthenticated users could not view content they were not authenticated for and would be redirected to the login page. Furthermore he was also responsible for the TailwindCSS setup, which facilitated buiding complex responsive layouts much easier.
 
 # One more thing?
-
-**Task:** Any additional comment you want to share with the course staff? 
 
 If we had access to better servers (with better specs, GPUs, etc.) we could make the workers render videos faster and be able to process larger repositories.
