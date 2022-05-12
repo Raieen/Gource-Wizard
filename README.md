@@ -1,6 +1,6 @@
-# Project sans-nom: Gource Wizard
+# Gource Wizard
 
-*This was created during part of a University course. The project was deployed for the duration of the course but it is no longer publically accessible.*
+⚠️ *This was created during part of a University course. The project was deployed for the duration of the course but it is no longer publically accessible.*
 
 ## Project Description
 
